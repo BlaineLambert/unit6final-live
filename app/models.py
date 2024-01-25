@@ -18,7 +18,7 @@ class Properties(models.Model):
     zip_code = models.IntegerField()
     size = models.IntegerField()
     available = models.BooleanField()
-    picture = models.ImageField(upload_to="app/uploads/", null=True, blank=True)
+    picture = models.ImageField(upload_to="app/uploads/", null=True, blank=True default='app/uploads/default.png')
     desc = models.TextField(null = True, blank=True)
 #     booking = models.ForeignKey(Booking, on_delete=models.CASCADE)
 
