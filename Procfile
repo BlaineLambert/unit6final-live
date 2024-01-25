@@ -1,1 +1,7 @@
-web: gunicorn UNIT6FINAL.wsgi --log-file -
+web: gunicorn UNIT6FINAL.wsgi:application --log-file - --log-level debug
+python manage.py collectstatic --noinput
+manage.py migrate
+
+
+
+
