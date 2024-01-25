@@ -1,0 +1,51 @@
+{% extends "base_index.html" %}
+{% block content %}
+<div>
+    <div class='house'>
+        <!-- <p>Properties</p> -->
+        {% for property in properties %}
+            <img class="homepageimg" src='{{property.picture.url}}'>
+            <div class="table-responsive">
+              <table class="table">
+                  <thead>
+                    <tr>
+                      <th>Owner</th>
+                      <th>Price</th>
+                      <th>State</th>
+                      <th>Address</th>
+                      <th>City</th>
+                      <th>Zip Code</th>
+                      <th>Size</th>
+                      <th>Avaliable</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>{{ property.user_props.name }}</td>
+                      <td>{{ property.price }}</td>
+                      <td>{{ property.state }}</td>
+                      <td>{{ property.address }}</td>
+                      <td>{{ property.city }}</td>
+                      <td>{{ property.zip_code }}</td>
+                      <td>{{ property.size }}</td>
+                      {% if property.available == True %}
+                      <td> Avaliable </td>
+                      {% else %}
+                      <td> Not Avaliable </td>
+                      {% endif %}
+                    </tr>
+                  </tbody>
+                </table>
+            </div>
+              
+            <!-- <h3 class="prop name">{{ property.user_props.name }}</h3>
+            <p class="prop price">{{ property.price }}</p>
+            <p class="prop address">{{ property.address }}</p>
+            <p class="prop city">{{ property.city }}</p>
+            <p class="prop zip-code">{{ property.zip_code }}</p>
+            <p class="prop siuuuze">{{ property.size }}</p>
+            <p class="prop avaliable">{{ property.available }}</p> -->
+        {% endfor %}
+    </div>
+</div>
+{% endblock content %}

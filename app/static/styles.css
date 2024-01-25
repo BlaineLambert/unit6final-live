@@ -1,0 +1,172 @@
+html{
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    /* background-color: #7c7c7e; */
+
+}
+.hiding{
+    position: absolute;left: 100000px;
+  }
+  
+.create_body{
+    margin: 0%;
+    overflow: hidden;
+}
+.create_div{
+background-color: rgb(255, 255, 255);
+text-align: center;
+margin-top: 50px;
+padding-top: 10px;
+padding-bottom: 10px;
+border-radius: 20px;
+box-shadow: 0 0 10px rgba(72, 56, 56, 0.892);
+border-width: 40%;
+}
+.body{
+    background-color: rgb(255, 225, 244);
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.header{
+    background-color: rgb(255, 255, 255);
+    padding-left: 10px;
+    padding-right: 10px;
+    z-index: 100;
+    position:sticky;
+    position: -webkit-sticky;
+    top: 0;
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.48);
+}
+.header2{
+    background-color: rgb(255, 255, 255);
+    padding-top: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.house{
+    background-color: rgb(255, 255, 255);
+    text-align: center;
+    margin-top: 50px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 20px;
+    box-shadow: 0 0 10px rgba(72, 56, 56, 0.892);
+}
+
+/* img {
+    max-width: 200px; 
+    height: auto;
+} */
+
+.userscard{
+    padding-left: 10px;
+}
+
+.register_background{
+    background-color: #8f8cf1;
+    height: 400px;
+    width: 380px;
+    position: absolute;
+    top: 17%;
+    left: 37.8%;
+    text-align: center;
+    padding-top: 2%;
+}
+
+.register_text{
+    font-size: 28pt;
+}
+
+.register_input{
+    height: 40px;
+    width: 50px;
+    padding: 20px;
+    padding-left: 28%;
+}
+
+.create_acc_btn{
+    position: absolute;
+    top: 90%;
+    left: 45%;
+}
+
+.register_to_login_btn{
+    position: absolute;
+    top: 80%;
+    left: 23%;
+}
+
+.hide{
+    visibility: hidden;
+}
+
+.house {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 20px 20%;
+    text-align: center;
+}
+
+.homepageimg {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.prop {
+    margin: 5px 0;
+}
+
+.name{
+    font-style: oblique;
+}
+
+.popup-container {
+    display: hidden;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    border: 1px solid #ccc;
+    padding: 20px;
+    z-index: 9999;
+    width: 300px;
+}
+
+.popup-container .btn-secondary {
+    float: right; 
+}
+
+.table{
+    text-align: center;
+}
+
+.profile-table{
+    width: 300px;
+    border: 1px solid #ccc;
+}
+
+.profile-table img{
+    max-width: 100%;
+    height: auto;
+}
+.flipping-text {
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.5s ease-in-out;
+  }
+  

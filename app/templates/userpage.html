@@ -1,0 +1,131 @@
+{% extends "base_index.html" %}
+{% load static %}
+{% block content %}
+<style>
+    .crd-container {
+        width: 359px; /* Adjust the width as needed for a business card size */
+        padding: 10px;
+        margin: 50px auto; /* Adjust the top and bottom margin for centering */
+        background-color: #f0f0f0; /* Add your desired background color */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow */
+    }
+
+    .profile-table img{
+        width: 100%;
+        height: auto;
+    }
+
+    .userscard {
+        margin: 0;
+    }
+
+    .business-crd {
+        margin: auto; /* Center the card */
+    }
+</style>
+
+                {% if account is not None%}
+                <div class="body crd-container ">
+                    <div class="crd-body">
+                        <div class="business-crd card-body">
+                            <table class="profile-table ">
+                                
+                                    {% if account.profile_pic %}
+                                    <td>
+                                        <img src="{{account.profile_pic.url}}" alt="failed to load">
+                                    </td>
+                                    {% else %}
+                                    <td>
+                                        <img src="{% static "image/default.jpeg" %}" alt="default image">
+                                    </td>
+                                    {% endif %}
+                            
+                                
+                                
+                                    <td>
+                                        <div class="flipping-text" onclick="flipText(this)" onmouseout="resetText(this)">
+                                            <div class="userscard">
+                                            <h5 class="card-title">{{ account.name}}</h5>
+                                            <p class="card-text">{{ account.phone_number }}</p>
+                                            <p class="card-text">{{ request.user.email }}</p>
+                                            {% comment %} <p class="card-text">{{ account. }}</p> {% endcomment %}
+                                            </div>
+                                        </div>
+                                        <script src='{% static "main.js" %}'></script>
+                                    </td>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                    
+                {% else %}
+            <div class="container mt-3">
+                <div class="card">
+                    <div class="card-body">
+                        <form method="POST" action="" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <p class="hide">{{ form.user }}</p>
+                            <label>
+                            <p>Your Name:</p>
+                            {{ form.name }}
+                            </label>
+                            <label>
+                            <p>Your Number:</p>
+                            {{ form.phone_number }}
+                            </label>
+                            <label>
+                            <p>Your Profile Picture:</p>
+                            {{ form.profile_pic }}
+                            </label>
+                            <button type="submit" name="create_account">Complete Setup</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+                {% endif %}
+            
+    {% for object in places %}
+    <div class="house">
+        <img class="homepageimg" src="{{object.picture.url}}">
+        <div class="table-responsive">
+        <form method="POST" action="">
+        {% csrf_token %}
+            <table class="table">
+                <thead>
+                    <tr>
+                    <th>Owner</th>
+                    <th>Price</th>
+                    <th>State</th>
+                    <th>Address</th>
+                    <th>City</th>
+                    <th>Zip Code</th>
+                    <th>Size</th>
+                    <th>Avaliable</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                    <td>{{account.name}}</td>
+                    <td>{{ object.price }}</td>
+                    <td>{{ object.state }}</td>
+                    <td>{{ object.address }}</td>
+                    <td>{{ object.city }}</td>
+                    <td>{{ object.zip_code }}</td>
+                    <td>{{ object.size }}</td>
+                    {% if object.available == True %}
+                    <td> Avaliable </td>
+                    {% else %}
+                    <td> Not Avaliable </td>
+                    {% endif %}
+                    </tr>
+                </tbody>
+                </table>
+                <button class="btn btn-secondary" type="submit" name="delete_property" value="{{ object.id }}"> delete </button>
+                <button class="btn btn-secondary" type="submit" name="prop_sold" value="{{ object.id }}"> Sell </button>
+            </form>  
+            
+        </div> 
+       
+    </div>
+    {%endfor%}
+{% endblock content %}

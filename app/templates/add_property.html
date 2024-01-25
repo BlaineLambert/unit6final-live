@@ -1,0 +1,68 @@
+{% extends "base_index.html" %}
+
+{% block content %}
+<body class="create_body">
+    <form method="POST" action="" enctype="multipart/form-data" class="container mt-5">
+        {% csrf_token %}
+        
+        <div class="form-group hiding">
+            {{ form.user_props.label_tag }}
+            {{ form.user_props }}
+        </div>
+
+        <div class="create_div">
+            <div class="form-group">
+                <p>Property Name:</p>
+                {{ form.prop_name }}
+            </div>
+
+            <div class="form-group">
+                <p>Price:</p>
+                {{ form.price }}
+            </div>
+
+            <div class="form-group">
+                <p>Address:<p/>
+                {{ form.address }}
+            </div>
+
+            <div class="form-group">
+                <p>State:</p>
+                {{ form.state }}
+            </div>
+
+            <div class="form-group">
+                <p>City:</p>
+                {{ form.city }}
+            </div>
+
+            <div class="form-group">
+                <p>Zipcode:</p>
+                {{ form.zip_code }}
+            </div>
+
+            <div class="form-group">
+                <p>Square Foot:</p>
+                {{ form.size }}
+            </div>
+
+            <div class="form-group">
+                <p>Is this property available?</p>
+                {{ form.available }}
+            </div>
+
+            <div class="form-group">
+                <p>Photo of property:</p>
+                {{ form.picture }}
+            </div>
+
+            <div class="form-group">
+                <p>Description</p>
+                {{ form.desc }}
+            </div>
+
+            <button type="submit" class="btn btn-primary">Save Changes</button>
+        </div>
+    </form>
+</body>
+{% endblock content %}

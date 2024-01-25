@@ -1,0 +1,42 @@
+{% extends "base_index.html" %}
+{% block content %}
+{% for property in places %}
+    <div>
+      <div class="house">
+        <img class="homepageimg" src="{{property.picture.url}}">
+        <div class="table-responsive">
+          <table class="table">
+              <thead>
+                <tr>
+                  <th>Owner</th>
+                  <th>Price</th>
+                  <th>State</th>
+                  <th>Address</th>
+                  <th>City</th>
+                  <th>Zip Code</th>
+                  <th>Size</th>
+                  <th>Available</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>{{ property.user_props.name }}</td>
+                  <td>${{ property.price }}</td>
+                  <td>{{ property.state }}</td>
+                  <td>{{ property.address }}</td>
+                  <td>{{ property.city }}</td>
+                  <td>{{ property.zip_code }}</td>
+                  <td>{{ property.size }} SQFT.</td>
+                  {% if property.available == True %}
+                  <td> Available </td>
+                  {% else %}
+                  <td> Not Available </td>
+                  {% endif %}
+                </tr>
+              </tbody>
+            </table>
+        </div> 
+      </div>
+    </div>
+    {% endfor %}
+{% endblock content %}
