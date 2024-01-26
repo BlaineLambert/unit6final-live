@@ -18,8 +18,3 @@ class AddProperty(ModelForm):
     class Meta:
         model = Properties
         fields = ['user_props','prop_name', 'price', 'address', 'state', 'city', 'zip_code', 'size', 'available', 'picture','desc']
-
-# class BookingProperty(ModelForm):
-#     class Meta:
-#         model = Booking
-#         fields = ['start_date', 'end_date']
