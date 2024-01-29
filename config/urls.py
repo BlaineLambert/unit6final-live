@@ -21,13 +21,12 @@ from app import views
 from config import settings
 
 urlpatterns = [
-    path('booking/<str:name>', views.booking, name='booking'),
+    path('', views.homepage, name='home'),
     path('filter-search/<item>/', views.filter, name="filter"),
     path('logout/', views.logout_func),
     path('register/', views.register, name='register'),
     path('login/', views.loginpage, name='login'),
     path('admin/', admin.site.urls),
-    path('', views.homepage, name='home'),
     path('userpage/', views.userpage, name='user'),
     path('property/', views.add_property, name='property')
 ]

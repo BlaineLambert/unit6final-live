@@ -17,7 +17,16 @@ def register(request):
         form = CreateUserForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('login')
+            username = request.POST.get('username')
+            password1 = request.POST.get('password1')
+            password2 = request.POST.get('password2')
+            if password1 == password2:
+                password = password2
+                user = authenticate(request, username=username, password=password)
+                if user is not None:
+                    print('working in reg')
+                    login(request, user)
+                    return redirect('user')
     context = {'form': form}
     return render(request, 'register.html', context)
 
@@ -29,6 +38,7 @@ def loginpage(request):
         password = request.POST.get('password')
         user = authenticate(request, username=username, password=password)
         if user is not None:
+            print('working in login')
             login(request, user)
             return redirect('home')
         else:
@@ -43,17 +53,9 @@ def logout_func(request):
 
 
 
-@login_required(login_url='login')
 def filter(request, item):
     properties = filter_search(item)
     return properties
-
-
-
-def booking(request, name):
-    booked = booking_props(name)
-    context = {'booked':booked}
-    return render(request, 'userpage.html',context)
 
 
 
@@ -68,7 +70,6 @@ def homepage(request):
         places = Properties.objects.all()
         context = {'places': places}
         return render(request, 'home.html', context)
-
 
 
 @login_required(login_url='login')

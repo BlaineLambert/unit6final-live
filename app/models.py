@@ -6,7 +6,7 @@ class Account(models.Model):
     name = models.CharField(max_length = 24)
     phone_number = models.CharField(max_length = 10)
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    profile_pic = models.ImageField(upload_to="app/uploads/", null=True, blank=True)
+    profile_pic = models.ImageField(upload_to="app/profilepics/", null=True, blank=True, default='app/profilepics/user-default.jpeg')
 
 class Properties(models.Model):
     user_props = models.ForeignKey(Account, on_delete=models.CASCADE)

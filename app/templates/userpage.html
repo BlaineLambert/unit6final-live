@@ -30,15 +30,15 @@
                         <div class="business-crd card-body">
                             <table class="profile-table ">
                                 
-                                    {% if account.profile_pic %}
+                                    {% comment %} {% if account.profile_pic %} {% endcomment %}
                                     <td>
-                                        <img src="{{account.profile_pic.url}}" alt="failed to load">
+                                        <img src="{{ account.profile_pic.url }}" alt="failed to load">
                                     </td>
-                                    {% else %}
+                                    {% comment %} {% else %}
                                     <td>
-                                        <img src="{% static "image/default.jpeg" %}" alt="default image">
+                                        <img src="{% static "image/fisher.png" %}" alt="default image">
                                     </td>
-                                    {% endif %}
+                                    {% endif %} {% endcomment %}
                             
                                 
                                 
@@ -48,7 +48,6 @@
                                             <h5 class="card-title">{{ account.name}}</h5>
                                             <p class="card-text">{{ account.phone_number }}</p>
                                             <p class="card-text">{{ request.user.email }}</p>
-                                            {% comment %} <p class="card-text">{{ account. }}</p> {% endcomment %}
                                             </div>
                                         </div>
                                         <script src='{% static "main.js" %}'></script>
