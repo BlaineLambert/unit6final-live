@@ -83,48 +83,42 @@
             </div>
                 {% endif %}
             
-    {% for object in places %}
-    <div class="house">
-        <img class="homepageimg" src="{{object.picture.url}}">
-        <div class="table-responsive">
-        <form method="POST" action="">
-        {% csrf_token %}
-            <table class="table">
-                <thead>
-                    <tr>
-                    <th>Owner</th>
-                    <th>Price</th>
-                    <th>State</th>
-                    <th>Address</th>
-                    <th>City</th>
-                    <th>Zip Code</th>
-                    <th>Size</th>
-                    <th>Avaliable</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                    <td>{{account.name}}</td>
-                    <td>{{ object.price }}</td>
-                    <td>{{ object.state }}</td>
-                    <td>{{ object.address }}</td>
-                    <td>{{ object.city }}</td>
-                    <td>{{ object.zip_code }}</td>
-                    <td>{{ object.size }}</td>
-                    {% if object.available == True %}
-                    <td> Avaliable </td>
-                    {% else %}
-                    <td> Not Avaliable </td>
-                    {% endif %}
-                    </tr>
-                </tbody>
-                </table>
-                <button class="btn btn-secondary" type="submit" name="delete_property" value="{{ object.id }}"> delete </button>
-                <button class="btn btn-secondary" type="submit" name="prop_sold" value="{{ object.id }}"> Sell </button>
-            </form>  
-            
-        </div> 
-       
-    </div>
-    {%endfor%}
+                {% for property in places %}
+                <div>
+                  <div class="house">
+                    <img class="homepageimg" src="{{property.picture.url}}">
+                    <div class="table-responsive collapse" id="extraInfo{{forloop.counter}}">
+                      <table class="table">
+                          <thead>
+                            <tr>
+                              <th>Owner</th>
+                              <th>Address</th>
+                              <th>Zip Code</th>
+                              <th>Available</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>{{ property.user_props.name }}</td>
+                              <td>{{ property.address }}</td>
+                              <td>{{ property.zip_code }}</td>
+                              {% if property.available == True %}
+                              <td> Available </td>
+                              {% else %}
+                              <td> Not Available </td>
+                              {% endif %}
+                            </tr>
+                          </tbody>
+                        </table>
+                    </div> 
+                    <div class='d-flex align-content-center justify-content-around'>
+                      <button type="button" class="btn btn-secondary d-flex align-content-end justify-content-end" data-bs-toggle="collapse" data-bs-target="#extraInfo{{forloop.counter}}">Learn More</button>
+                      <td>Price: ${{ property.price }} | </td>
+                      <td>Size: {{ property.size }} SQFT. | </td>
+                      <td>State: {{ property.state }} | </td>
+                      <td>City: {{ property.city }}</td>
+                    </div>
+                  </div>
+                </div>
+                {% endfor %}
 {% endblock content %}
